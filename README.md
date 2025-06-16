@@ -4,26 +4,61 @@ Este repositorio contiene un proyecto completo de diseño y desarrollo de una ba
 
 ## 🛠️ Tecnologías utilizadas
 
+- **draw.io**: Documentación estructural y análisis de requerimientos.
 - **MySQL Workbench**: Creación de base de datos real, normalización y ejecución de scripts SQL.
 - **Power BI**: Visualización de indicadores operativos y estratégicos del sistema.
-- **draw.io**: Documentación estructural y análisis de requerimientos.
+
 
 ---
 
-## 📄 Archivos incluidos
+## 📁 Archivos incluidos
+OLTP Modelado de datos Supply – DEP.drawio: archivo maestro del análisis estructural, incluye el contexto del negocio, el modelo lógico, físico y los objetivos del sistema de abastecimiento. Es el insumo base del proyecto, desarrollado según la guía del profesor.
 
-- `Modelado de datos - DEP.drawio`: archivo maestro del análisis completo del sistema (contexto, modelo lógico, físico y objetivos).
-- `modelo-abastecimiento.pdf`: versión exportada en PDF para lectura rápida.
-- `Dashboard_Compras_2024.pbix`: tablero dinámico con KPIs y visuales conectados a la base OLTP.
-- `scripts_mysql.sql` (opcional si lo tienes): script completo de creación y carga de datos en MySQL Workbench.
+modelo-abastecimiento.pdf: versión exportada en PDF del documento anterior para facilitar su revisión sin necesidad de abrir el editor de diagramas.
+
+dashboard_compras_abastecimiento_2024.pbix: dashboard interactivo en Power BI, conectado directamente a la base OLTP. Incluye KPIs clave, visuales de comportamiento por proveedor, producto y evolución anual de compras.
+
+scripts_mysql.sql (opcional si lo adjuntas): script SQL completo para MySQL Workbench. Incluye la creación de tablas normalizadas, claves foráneas y carga de datos simulados para el año 2024.
 
 ---
 
-## 🧩 Estructura del modelo de datos
+## 🧩 Estructura del Modelo de Datos
+El sistema se basa en un modelo relacional normalizado desarrollado en MySQL Workbench. La estructura fue diseñada siguiendo principios OLTP para garantizar consistencia, escalabilidad y trazabilidad en las operaciones de abastecimiento.
 
-- 6 tablas normalizadas: `categoria`, `producto`, `proveedor`, `producto_proveedor`, `orden_compra`, `detalle_orden`.
-- Claves primarias y foráneas bien definidas.
-- Datos simulados del año 2024 para pruebas analíticas realistas.
+🔹 Tablas del Modelo
+categoria
+Contiene las categorías a las que pertenece cada producto.
+Campos clave: categoriaID, nombreCategoria.
+
+producto
+Registro maestro de productos con descripciones, precios y relación con su categoría.
+Campos clave: productoID, nombreProducto, descripcion, precio, categoriaID.
+
+proveedor
+Información de los proveedores registrados en el sistema.
+Campos clave: proveedorID, nombreProveedor, contacto.
+
+producto_proveedor
+Tabla puente para representar relaciones muchos a muchos entre productos y proveedores.
+Campos clave: productoID, proveedorID.
+
+orden_compra
+Cabecera de cada orden emitida con fecha y proveedor asociado.
+Campos clave: ordenID, fecha, proveedorID.
+
+detalle_orden
+Detalle de cada compra: productos, cantidades y precios unitarios.
+Campos clave: ordenID, productoID, cantidad, precioUnitario.
+
+🔐 Integridad y relaciones
+Se definieron claves primarias y foráneas en todas las tablas para mantener integridad referencial.
+
+Las relaciones permiten reconstruir de forma eficiente el historial completo de compras.
+
+🗓️ Datos de prueba
+El modelo fue poblado con datos simulados para el año 2024, basados en escenarios realistas del sector retail.
+
+Estos datos permiten probar consultas, relaciones y análisis en herramientas como Power BI sin depender de información confidencial.
 
 ---
 
@@ -41,10 +76,4 @@ Este repositorio contiene un proyecto completo de diseño y desarrollo de una ba
 
 > Desarrollar una base de datos OLTP funcional en MySQL Workbench con soporte para análisis posterior en Power BI, representando un flujo operativo real de compras y abastecimiento.
 
----
 
-## 👨‍🏫 Contexto académico
-
-Proyecto desarrollado como entrega práctica basada en el archivo del profesor: `Modelado de datos - DEP.drawio`, que contiene el análisis completo del negocio, el modelo conceptual y físico, y la lógica transaccional del sistema.
-
----
