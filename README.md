@@ -12,6 +12,9 @@ Este repositorio contiene un proyecto completo de diseño y desarrollo de una ba
 ---
 
 ## 📁 Archivos incluidos
+
+https://drive.google.com/file/d/1jimWq3goWteoN_N_pNOONYDzDR3itPP9/view?usp=drive_link, https://drive.google.com/file/d/1QP3D1z_MvVWttVSPKt0hfvT37IfcJMa-/view?usp=drive_link, https://docs.google.com/document/d/1J_OnMsXDP5lXM5yy4As_CbdX-UN8rS63VOq5xuVQe2s/edit?usp=drive_link
+
 OLTP Modelado de datos Supply – DEP.drawio: archivo maestro del análisis estructural. Incluye el contexto del negocio, el modelo lógico, físico y los objetivos del sistema de abastecimiento. Es el insumo base del proyecto, desarrollado según la guía del profesor. La base de datos fue diseñada y construida directamente en MySQL Workbench.
 
 dashboard_compras_abastecimiento_2024.pbix: dashboard interactivo en Power BI, conectado a la base OLTP. Contiene KPIs clave, análisis por proveedor y producto, y una visualización de la evolución anual de las compras.
